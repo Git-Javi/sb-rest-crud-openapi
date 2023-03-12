@@ -1,0 +1,15 @@
+components:
+  parameters:
+    NameInQuery:
+      name: name
+      in: query
+      description: user name
+      required: true
+      schema:
+        type: string
+  schemas:
+    Dummy:
+      type: object
+      properties:
+        greeting:
+          type: string

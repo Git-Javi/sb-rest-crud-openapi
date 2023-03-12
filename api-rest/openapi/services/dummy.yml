@@ -1,0 +1,12 @@
+get:
+  summary: Gets a dummy greeting
+  tags:
+    - Dummy
+  operationId: dummyGreeting
+  responses:
+    '200':
+      description: Successful greeted
+      content:
+        application/json:
+          schema:
+            $ref: '../components/components.yml#/components/schemas/Dummy'

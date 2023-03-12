@@ -1,0 +1,4 @@
+com\jagasa\DummyApiImpl.class
+com\jagasa\api\DummyApi.class
+com\jagasa\TestApiImpl.class
+com\jagasa\models\DummyDTO.class
