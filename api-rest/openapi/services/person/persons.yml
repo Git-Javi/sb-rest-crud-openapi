@@ -1,0 +1,14 @@
+get:
+  summary: List of Persons
+  tags:
+    - Person
+  operationId: listPersons
+  responses:
+    '200':
+      description: List of Persons
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../../components/person/components.yml#/components/schemas/Person'

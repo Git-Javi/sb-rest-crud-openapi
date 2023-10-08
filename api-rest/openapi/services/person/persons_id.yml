@@ -1,0 +1,14 @@
+get:
+  summary: Gets a Person
+  tags:
+    - Person
+  operationId: getPerson
+  parameters:
+    - $ref: '../../components/person/components.yml#/components/parameters/PersonIdInPath'
+  responses:
+    '200':
+      description: Get a person
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/person/components.yml#/components/schemas/Person'

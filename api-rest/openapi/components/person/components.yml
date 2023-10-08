@@ -1,0 +1,52 @@
+components:
+  parameters:
+    PersonIdInPath:
+      name: personId
+      in: path
+      description: Id of the person
+      required: true
+      example: 1
+      schema:
+        $ref: '#/components/schemas/PersonId'
+  schemas:
+    PersonId:
+      description: Id of the person
+      type: integer
+      format: int32
+      minimum: 1
+      maximum: 2147483647
+      example: 1
+    PersonName:
+      description: The name of the person
+      type: string
+      maxLength: 255
+      example: 'Homer'
+    PersonAddress:
+      description: The address of the person
+      type: string
+      maxLength: 255
+      example: '742 Evergreen Terrace'
+    PersonPhoneNumber:
+      description: The address of the person
+      type: integer
+      format: int32
+      minimum: 599999999
+      maximum: 800000000
+      example: 666555444
+    Person:
+      type: object
+      additionalProperties: false
+      properties:
+        personId:
+          $ref: '#/components/schemas/PersonId'
+        personName:
+          $ref: '#/components/schemas/PersonName'
+        personAddress:
+          $ref: '#/components/schemas/PersonAddress'
+        personPhoneNumber:
+          $ref: '#/components/schemas/PersonPhoneNumber'
+    PersonList:
+      title: List of Person
+      type: array
+      items:
+        $ref: '#/components/schemas/Person'
