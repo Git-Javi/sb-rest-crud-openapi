@@ -4,7 +4,7 @@ get:
     - Person
   operationId: getPerson
   parameters:
-    - $ref: '../../components/person/components.yml#/components/parameters/PersonIdInPath'
+    - $ref: '../../components/person/components.yml#/components/parameters/PersonIdInPathRequired'
   responses:
     '200':
       description: Get a person
