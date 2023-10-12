@@ -11,14 +11,6 @@ import java.util.List;
 @RestController
 public class PersonsApiImpl implements PersonsApi {
 
-/*    @Override
-    public ResponseEntity<PersonDTO> getPersonHello() {
-        PersonDTO dummy = new PersonDTO();
-        dummy.setPersonName("heeeeeeeeeeeelloooo");
-        System.out.println("------------------dummyGreeting------------------");
-        return ResponseEntity.status(HttpStatus.OK).body(dummy);
-    }*/
-
     @Override
     public ResponseEntity<PersonDTO> getPerson(Integer personId) {
         PersonDTO personDTO = new PersonDTO();
