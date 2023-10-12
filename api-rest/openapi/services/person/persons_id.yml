@@ -12,3 +12,33 @@ get:
         application/json:
           schema:
             $ref: '../../components/person/components.yml#/components/schemas/Person'
+put:
+  summary: Update a Person
+  tags:
+    - Person
+  operationId: updatePerson
+  parameters:
+    - $ref: '../../components/person/components.yml#/components/parameters/PersonIdInPathRequired'
+  requestBody:
+    description: Updated person data
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/person/components.yml#/components/schemas/Person'
+  responses:
+    '200':
+      description: Update a Person
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/person/components.yml#/components/schemas/Person'
+delete:
+  summary: Delete a Person
+  tags:
+    - Person
+  operationId: deletePerson
+  parameters:
+    - $ref: '../../components/person/components.yml#/components/parameters/PersonIdInPathRequired'
+  responses:
+    '204':
+      description: Delete a person

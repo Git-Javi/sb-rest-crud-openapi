@@ -10,3 +10,15 @@ get:
         application/json:
           schema:
               $ref: '../../components/person/components.yml#/components/schemas/PersonList'
+post:
+  summary: Create a Person
+  tags:
+    - Person
+  operationId: createPerson
+  responses:
+    '201':
+      description: Create a Person
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/person/components.yml#/components/schemas/Person'
