@@ -1,0 +1,43 @@
+get:
+  summary: Gets an Address
+  tags:
+    - Address
+  operationId: getAddress
+  parameters:
+    - $ref: '../../components/address/components.yml#/components/parameters/AddressIdInPathRequired'
+  responses:
+    '200':
+      description: Get an address
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/address/components.yml#/components/schemas/Address'
+put:
+  summary: Update an Address
+  tags:
+    - Address
+  operationId: updateAddress
+  parameters:
+    - $ref: '../../components/address/components.yml#/components/parameters/AddressIdInPathRequired'
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/address/components.yml#/components/schemas/Address'
+  responses:
+    '200':
+      description: Update an Address
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/address/components.yml#/components/schemas/Address'
+delete:
+  summary: Delete an Address
+  tags:
+    - Address
+  operationId: deleteAddress
+  parameters:
+    - $ref: '../../components/address/components.yml#/components/parameters/AddressIdInPathRequired'
+  responses:
+    '204':
+      description: Delete an address
