@@ -1,0 +1,51 @@
+components:
+  parameters:
+    AddressIdInPathRequired:
+      name: addressId
+      in: path
+      description: Id of the address
+      required: true
+      example: 1
+      schema:
+        $ref: '#/components/schemas/AddressId'
+  schemas:
+    AddressId:
+      description: Id of the address
+      type: integer
+      format: int32
+      minimum: 1
+      maximum: 2147483647
+    AddressPostalCode:
+      description: The postal code of the address
+      type: string
+      maxLength: 255
+      example: '20001'
+    AddressStreet:
+      description: The street of the address
+      type: string
+      maxLength: 255
+      example: '742 Evergreen Terrace'
+    AddressCity:
+      description: The city of the address
+      type: string
+      maxLength: 255
+      example: 'Springfield'
+    AddressCountry:
+      description: The country of the address
+      type: string
+      maxLength: 255
+      example: 'USA'
+    Address:
+      type: object
+      additionalProperties: false
+      properties:
+        addressId:
+          $ref: '#/components/schemas/AddressId'
+        addressPostalCode:
+          $ref: '#/components/schemas/AddressPostalCode'
+        addressStreet:
+          $ref: '#/components/schemas/AddressStreet'
+        addressCity:
+          $ref: '#/components/schemas/AddressCity'
+        addressCountry:
+          $ref: '#/components/schemas/AddressCountry'

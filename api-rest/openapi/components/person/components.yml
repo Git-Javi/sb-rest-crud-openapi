@@ -20,11 +20,6 @@ components:
       type: string
       maxLength: 255
       example: 'Homer'
-    PersonAddress:
-      description: The address of the person
-      type: string
-      maxLength: 255
-      example: '742 Evergreen Terrace'
     PersonPhoneNumber:
       description: The address of the person
       type: integer
@@ -41,7 +36,7 @@ components:
         personName:
           $ref: '#/components/schemas/PersonName'
         personAddress:
-          $ref: '#/components/schemas/PersonAddress'
+          $ref: '../../components/address/components.yml#/components/schemas/Address'
         personPhoneNumber:
           $ref: '#/components/schemas/PersonPhoneNumber'
     PersonList:
