@@ -15,6 +15,11 @@ post:
   tags:
     - Person
   operationId: createPerson
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/person/components.yml#/components/schemas/Person'
   responses:
     '201':
       description: Create a Person

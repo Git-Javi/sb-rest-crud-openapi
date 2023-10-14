@@ -65,8 +65,8 @@
                             <configOptions>
                                 <useSpringBoot3>true</useSpringBoot3> <!-- Config for Jakarta validation -->
                                 <interfaceOnly>true</interfaceOnly> <!-- Do not generate ApiImpl -->
-                                <generateSupportingFiles>false</generateSupportingFiles> <!-- Do not generate ApiUtil.class -->
-                                <skipDefaultInterface>true</skipDefaultInterface> <!-- Do not generate ApiUtil.class -->
+                                <generateSupportingFiles>false</generateSupportingFiles> <!-- Do not use ApiUtil.class -->
+                                <skipDefaultInterface>true</skipDefaultInterface> <!-- Do not use ApiUtil.class -->
                                 <serializableModel>true</serializableModel>
                                 <snapshotVersion>true</snapshotVersion>
                                 <useTags>true</useTags> <!-- Generate with unique api tag -->

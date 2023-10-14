@@ -12,8 +12,7 @@ import java.util.List;
 public class PersonApiImpl implements PersonApi {
 
     @Override
-    public ResponseEntity<PersonDTO> createPerson() {
-        PersonDTO personDTO = new PersonDTO();
+    public ResponseEntity<PersonDTO> createPerson(PersonDTO personDTO) {
         personDTO.setPersonId(3);
         personDTO.setPersonName("Cristiano Ronaldo");
         System.out.println("------------------createPerson------------------");

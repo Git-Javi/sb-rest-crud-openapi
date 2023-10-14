@@ -20,7 +20,6 @@ put:
   parameters:
     - $ref: '../../components/person/components.yml#/components/parameters/PersonIdInPathRequired'
   requestBody:
-    description: Updated person data
     content:
       application/json:
         schema:
