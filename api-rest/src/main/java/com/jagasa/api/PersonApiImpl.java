@@ -1,7 +1,11 @@
 package com.jagasa.api;
 
+import com.jagasa.dto.PersonApiDTO;
 import com.jagasa.dto.PersonDTO;
+import com.jagasa.mapper.PersonApiDTOMapper;
 import com.jagasa.service.PersonApi;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,27 +13,31 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
 public class PersonApiImpl implements PersonApi {
 
+    @Autowired
+    private final PersonApiDTOMapper personApiDTOMapper;
+
     @Override
-    public ResponseEntity<PersonDTO> createPerson(PersonDTO personDTO) {
-        personDTO.setPersonId(3);
-        personDTO.setPersonName("Cristiano Ronaldo");
+    public ResponseEntity<PersonApiDTO> createPerson(PersonApiDTO personDTO) {
+
         System.out.println("------------------createPerson------------------");
-        return ResponseEntity.status(HttpStatus.OK).body(personDTO);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(this.personApiDTOMapper.toApiDTO(PersonDTO.builder().personId(33).personName("TestName").build()));
     }
 
     @Override
-    public ResponseEntity<PersonDTO> getPerson(Integer personId) {
-        PersonDTO personDTO = new PersonDTO();
-        personDTO.setPersonId(personId);
-        personDTO.setPersonName("Leo Messi");
+    public ResponseEntity<PersonApiDTO> getPerson(Integer personId) {
         System.out.println("------------------getPerson------------------");
-        return ResponseEntity.status(HttpStatus.OK).body(personDTO);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(this.personApiDTOMapper.toApiDTO(new PersonDTO()));
     }
 
     @Override
-    public ResponseEntity<PersonDTO> updatePerson(Integer personId, PersonDTO personDTO) {
+    public ResponseEntity<PersonApiDTO> updatePerson(Integer personId, PersonApiDTO personDTO) {
         personDTO.setPersonId(5);
         personDTO.setPersonName("Maradona");
         System.out.println("------------------updatePersons------------------");
@@ -38,7 +46,7 @@ public class PersonApiImpl implements PersonApi {
 
     @Override
     public ResponseEntity<Void> deletePerson(Integer personId) {
-        PersonDTO personDTO = new PersonDTO();
+        PersonApiDTO personDTO = new PersonApiDTO();
         personDTO.setPersonId(personId);
         personDTO.setPersonName("Pelé");
         System.out.println("------------------deletePerson------------------");
@@ -46,8 +54,8 @@ public class PersonApiImpl implements PersonApi {
     }
 
     @Override
-    public ResponseEntity<List<PersonDTO>> listPersons() {
-        PersonDTO personDTO = new PersonDTO();
+    public ResponseEntity<List<PersonApiDTO>> listPersons() {
+        PersonApiDTO personDTO = new PersonApiDTO();
         personDTO.setPersonId(7);
         personDTO.setPersonName("Lucas Perez");
         System.out.println("------------------listPersons------------------");
