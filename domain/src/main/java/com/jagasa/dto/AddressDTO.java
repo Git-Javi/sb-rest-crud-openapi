@@ -12,16 +12,19 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class PersonDTO implements Serializable {
+public class AddressDTO implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
 
-    private Integer personId;
+    private Integer addressId;
 
-    private String personName;
+    private String postalCode;
 
-    private AddressDTO personAddress;
+    private String street;
 
-    private Integer personPhoneNumber;
+    private String city;
+
+    private String country;
+
 }
