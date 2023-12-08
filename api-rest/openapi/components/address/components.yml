@@ -42,11 +42,11 @@ components:
       properties:
         addressId:
           $ref: '#/components/schemas/AddressId'
-        addressPostalCode:
+        postalCode:
           $ref: '#/components/schemas/AddressPostalCode'
-        addressStreet:
+        street:
           $ref: '#/components/schemas/AddressStreet'
-        addressCity:
+        city:
           $ref: '#/components/schemas/AddressCity'
-        addressCountry:
+        country:
           $ref: '#/components/schemas/AddressCountry'

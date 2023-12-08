@@ -33,11 +33,11 @@ components:
       properties:
         personId:
           $ref: '#/components/schemas/PersonId'
-        personName:
+        name:
           $ref: '#/components/schemas/PersonName'
-        personAddress:
+        address:
           $ref: '../../components/address/components.yml#/components/schemas/Address'
-        personPhoneNumber:
+        phoneNumber:
           $ref: '#/components/schemas/PersonPhoneNumber'
     PersonList:
       title: List of Person
