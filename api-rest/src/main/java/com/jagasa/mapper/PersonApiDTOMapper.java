@@ -11,11 +11,5 @@ public interface PersonApiDTOMapper {
 
     PersonApiDTO toApiDTO(PersonDTO personDTO);
 
-
-    PersonDTO toDTO(PersonApiDTO personApiDTO);
-
     List<PersonApiDTO> toApiDTOList(List<PersonDTO> personDTO);
-
-    List<PersonDTO> toDTOList(List<PersonApiDTO> personApiDTOList);
-
 }
