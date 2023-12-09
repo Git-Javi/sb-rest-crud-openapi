@@ -1,9 +1,9 @@
 package com.jagasa.api;
 
 import com.jagasa.dto.PersonApiDTO;
-import com.jagasa.dto.PersonDTO;
 import com.jagasa.mapper.PersonApiDTOMapper;
 import com.jagasa.service.PersonApi;
+import com.jagasa.service.person.PersonService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,13 +19,16 @@ public class PersonApiImpl implements PersonApi {
     @Autowired
     private final PersonApiDTOMapper personApiDTOMapper;
 
-    @Override
-    public ResponseEntity<PersonApiDTO> createPerson(PersonApiDTO personDTO) {
+    @Autowired
+    private final PersonService personService;
 
+    @Override
+    public ResponseEntity<PersonApiDTO> createPerson(PersonApiDTO personApiDTO) {
         System.out.println("------------------createPerson------------------");
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(this.personApiDTOMapper.toApiDTO(PersonDTO.builder().personId(33).personName("TestName").build()));
+                .body(this.personApiDTOMapper.toApiDTO(
+                        this.personService.createPerson(this.personApiDTOMapper.toDTO(personApiDTO))));
     }
 
     @Override
@@ -33,13 +36,13 @@ public class PersonApiImpl implements PersonApi {
         System.out.println("------------------getPerson------------------");
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(this.personApiDTOMapper.toApiDTO(new PersonDTO()));
+                .body(this.personApiDTOMapper.toApiDTO(this.personService.getPerson(personId)));
     }
 
     @Override
     public ResponseEntity<PersonApiDTO> updatePerson(Integer personId, PersonApiDTO personDTO) {
         personDTO.setPersonId(5);
-        personDTO.setPersonName("Maradona");
+        personDTO.setName("Maradona");
         System.out.println("------------------updatePersons------------------");
         return ResponseEntity.status(HttpStatus.OK).body((personDTO));
     }
@@ -48,7 +51,7 @@ public class PersonApiImpl implements PersonApi {
     public ResponseEntity<Void> deletePerson(Integer personId) {
         PersonApiDTO personDTO = new PersonApiDTO();
         personDTO.setPersonId(personId);
-        personDTO.setPersonName("Pelé");
+        personDTO.setName("Pelé");
         System.out.println("------------------deletePerson------------------");
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
@@ -57,7 +60,7 @@ public class PersonApiImpl implements PersonApi {
     public ResponseEntity<List<PersonApiDTO>> listPersons() {
         PersonApiDTO personDTO = new PersonApiDTO();
         personDTO.setPersonId(7);
-        personDTO.setPersonName("Lucas Perez");
+        personDTO.setName("Lucas Perez");
         System.out.println("------------------listPersons------------------");
         return ResponseEntity.status(HttpStatus.OK).body(List.of(personDTO));
     }
