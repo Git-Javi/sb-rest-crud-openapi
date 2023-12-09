@@ -12,6 +12,10 @@ get:
         application/json:
           schema:
             $ref: '../../components/person/components.yml#/components/schemas/Person'
+    '404':
+      description: A Person with the specified ID was not found.
+    '500':
+      description: Unexpected error.
 put:
   summary: Update a Person
   tags:

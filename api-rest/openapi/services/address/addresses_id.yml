@@ -12,6 +12,10 @@ get:
         application/json:
           schema:
             $ref: '../../components/address/components.yml#/components/schemas/Address'
+    '404':
+      description: An Address with the specified ID was not found.
+    '500':
+      description: Unexpected error.
 put:
   summary: Update an Address
   tags:
