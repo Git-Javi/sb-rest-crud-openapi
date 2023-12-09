@@ -2,6 +2,7 @@ package com.jagasa.service.person;
 
 import com.jagasa.dto.PersonDTO;
 
+import com.jagasa.exception.JagasaNotFoundException;
 import com.jagasa.repository.person.PersonEntityMapper;
 import com.jagasa.repository.person.PersonRepository;
 import lombok.RequiredArgsConstructor;
@@ -30,7 +31,8 @@ public class PersonServiceImpl implements PersonService{
 
     @Override
     public PersonDTO getPerson(final Integer personId) {
-        return null;
+        return this.personEntityMapper.toDTO(
+                this.personRepository.findById(personId).orElseThrow(JagasaNotFoundException::new));
     }
 
     @Override

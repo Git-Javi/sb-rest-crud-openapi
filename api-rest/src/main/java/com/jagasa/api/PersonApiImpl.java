@@ -1,7 +1,6 @@
 package com.jagasa.api;
 
 import com.jagasa.dto.PersonApiDTO;
-import com.jagasa.dto.PersonDTO;
 import com.jagasa.mapper.PersonApiDTOMapper;
 import com.jagasa.service.PersonApi;
 import com.jagasa.service.person.PersonService;
@@ -37,7 +36,7 @@ public class PersonApiImpl implements PersonApi {
         System.out.println("------------------getPerson------------------");
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(this.personApiDTOMapper.toApiDTO(new PersonDTO()));
+                .body(this.personApiDTOMapper.toApiDTO(this.personService.getPerson(personId)));
     }
 
     @Override
