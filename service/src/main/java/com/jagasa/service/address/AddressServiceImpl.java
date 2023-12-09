@@ -1,6 +1,7 @@
 package com.jagasa.service.address;
 
 import com.jagasa.dto.AddressDTO;
+import com.jagasa.exception.JagasaNotFoundException;
 import com.jagasa.repository.address.AddressEntityMapper;
 import com.jagasa.repository.address.AddressRepository;
 import lombok.RequiredArgsConstructor;
@@ -28,7 +29,8 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     public AddressDTO getAddress(final Integer addressId) {
-        return null;
+        return this.addressEntityMapper.toDTO(
+                this.addressRepository.findById(addressId).orElseThrow(JagasaNotFoundException::new));
     }
 
     @Override

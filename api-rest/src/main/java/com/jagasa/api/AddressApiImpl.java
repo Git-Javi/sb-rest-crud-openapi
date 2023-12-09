@@ -31,11 +31,9 @@ public class AddressApiImpl implements AddressApi {
 
     @Override
     public ResponseEntity<AddressApiDTO> getAddress(Integer addressId) {
-        AddressApiDTO addressDTO = new AddressApiDTO();
-        addressDTO.setAddressId(addressId);
-        addressDTO.setStreet("C/ Inventada");
-        System.out.println("------------------getAddress------------------");
-        return ResponseEntity.status(HttpStatus.OK).body(addressDTO);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(this.addressApiDTOMapper.toApiDTO(this.addressService.getAddress(addressId)));
     }
 
     @Override

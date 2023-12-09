@@ -1,7 +1,6 @@
 package com.jagasa.service.person;
 
 import com.jagasa.dto.PersonDTO;
-
 import com.jagasa.exception.JagasaNotFoundException;
 import com.jagasa.repository.person.PersonEntityMapper;
 import com.jagasa.repository.person.PersonRepository;
@@ -14,7 +13,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class PersonServiceImpl implements PersonService{
+public class PersonServiceImpl implements PersonService {
 
     @Autowired
     private final PersonRepository personRepository;
