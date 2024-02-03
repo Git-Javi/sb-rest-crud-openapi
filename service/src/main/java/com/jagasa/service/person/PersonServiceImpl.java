@@ -34,9 +34,11 @@ public class PersonServiceImpl implements PersonService {
                 this.personRepository.findById(personId).orElseThrow(JagasaNotFoundException::new));
     }
 
+    @Transactional
     @Override
     public PersonDTO updatePerson(final Integer personId, final PersonDTO personDTO) {
-        return null;
+        this.getPerson(personId);
+        return this.personEntityMapper.toDTO(this.personRepository.save(this.personEntityMapper.fromDTO(personDTO)));
     }
 
     @Override

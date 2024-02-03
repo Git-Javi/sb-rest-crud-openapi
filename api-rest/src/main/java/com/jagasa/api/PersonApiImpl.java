@@ -1,6 +1,7 @@
 package com.jagasa.api;
 
 import com.jagasa.dto.PersonApiDTO;
+import com.jagasa.dto.PersonDTO;
 import com.jagasa.mapper.PersonApiDTOMapper;
 import com.jagasa.service.PersonApi;
 import com.jagasa.service.person.PersonService;
@@ -40,11 +41,12 @@ public class PersonApiImpl implements PersonApi {
     }
 
     @Override
-    public ResponseEntity<PersonApiDTO> updatePerson(Integer personId, PersonApiDTO personDTO) {
-        personDTO.setPersonId(5);
-        personDTO.setName("Maradona");
+    public ResponseEntity<PersonApiDTO> updatePerson(Integer personId, PersonApiDTO personApiDTO) {
         System.out.println("------------------updatePersons------------------");
-        return ResponseEntity.status(HttpStatus.OK).body((personDTO));
+        final PersonDTO personDTO = this.personApiDTOMapper.toDTO(personApiDTO);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(this.personApiDTOMapper.toApiDTO(this.personService.updatePerson(personId, personDTO)));
     }
 
     @Override
