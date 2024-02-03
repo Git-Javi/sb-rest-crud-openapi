@@ -51,10 +51,8 @@ public class PersonApiImpl implements PersonApi {
 
     @Override
     public ResponseEntity<Void> deletePerson(Integer personId) {
-        PersonApiDTO personDTO = new PersonApiDTO();
-        personDTO.setPersonId(personId);
-        personDTO.setName("Pelé");
         System.out.println("------------------deletePerson------------------");
+        this.personService.deletePerson(personId);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 

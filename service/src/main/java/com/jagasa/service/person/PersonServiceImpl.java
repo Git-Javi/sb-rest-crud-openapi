@@ -41,9 +41,10 @@ public class PersonServiceImpl implements PersonService {
         return this.personEntityMapper.toDTO(this.personRepository.save(this.personEntityMapper.fromDTO(personDTO)));
     }
 
+    @Transactional
     @Override
     public void deletePerson(final Integer personId) {
-
+        this.personRepository.delete(this.personEntityMapper.fromDTO(this.getPerson(personId)));
     }
 
     @Override
