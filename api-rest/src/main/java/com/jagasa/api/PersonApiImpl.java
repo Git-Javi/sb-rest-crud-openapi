@@ -58,11 +58,10 @@ public class PersonApiImpl implements PersonApi {
 
     @Override
     public ResponseEntity<List<PersonApiDTO>> listPersons() {
-        PersonApiDTO personDTO = new PersonApiDTO();
-        personDTO.setPersonId(7);
-        personDTO.setName("Lucas Perez");
         System.out.println("------------------listPersons------------------");
-        return ResponseEntity.status(HttpStatus.OK).body(List.of(personDTO));
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(this.personApiDTOMapper.toApiDTOList(this.personService.listPersons()));
     }
 
 }

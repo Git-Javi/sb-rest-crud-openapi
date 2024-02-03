@@ -5,6 +5,7 @@ import com.jagasa.exception.JagasaNotFoundException;
 import com.jagasa.repository.person.PersonEntityMapper;
 import com.jagasa.repository.person.PersonRepository;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.collections4.IterableUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -38,18 +39,21 @@ public class PersonServiceImpl implements PersonService {
     @Override
     public PersonDTO updatePerson(final Integer personId, final PersonDTO personDTO) {
         this.getPerson(personId);
-        return this.personEntityMapper.toDTO(this.personRepository.save(this.personEntityMapper.fromDTO(personDTO)));
+        return this.personEntityMapper.toDTO(
+                this.personRepository.save(this.personEntityMapper.fromDTO(personDTO)));
     }
 
     @Transactional
     @Override
     public void deletePerson(final Integer personId) {
-        this.personRepository.delete(this.personEntityMapper.fromDTO(this.getPerson(personId)));
+        this.personRepository.delete(
+                this.personEntityMapper.fromDTO(this.getPerson(personId)));
     }
 
     @Override
     public List<PersonDTO> listPersons() {
-        return null;
+       return this.personEntityMapper.toDTOList(
+               IterableUtils.toList(this.personRepository.findAll()));
     }
 
 }
