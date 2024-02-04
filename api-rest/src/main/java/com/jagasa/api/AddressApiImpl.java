@@ -20,14 +20,6 @@ public class AddressApiImpl implements AddressApi {
     @Autowired
     private final AddressService addressService;
 
-    @Override
-    public ResponseEntity<AddressApiDTO> createAddress(AddressApiDTO addressDTO) {
-        System.out.println("------------------createPerson------------------");
-        return ResponseEntity
-                .status(HttpStatus.OK)
-                .body(this.addressApiDTOMapper.toApiDTO(
-                        this.addressService.createAddress(this.addressApiDTOMapper.toDTO(addressDTO))));
-    }
 
     @Override
     public ResponseEntity<AddressApiDTO> getAddress(Integer addressId) {
@@ -42,15 +34,6 @@ public class AddressApiImpl implements AddressApi {
         addressDTO.setStreet("C/ Mentira");
         System.out.println("------------------updateAddresss------------------");
         return ResponseEntity.status(HttpStatus.OK).body((addressDTO));
-    }
-
-    @Override
-    public ResponseEntity<Void> deleteAddress(Integer addressId) {
-        AddressApiDTO addressDTO = new AddressApiDTO();
-        addressDTO.setAddressId(addressId);
-        addressDTO.setStreet("C/ Olvidada");
-        System.out.println("------------------deleteAddress------------------");
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
     
 }

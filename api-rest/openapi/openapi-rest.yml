@@ -11,8 +11,6 @@ tags:
 paths:
   '/addresses/{addressId}':
     $ref: 'services/address/addresses_id.yml'
-  '/addresses':
-    $ref: 'services/address/addresses.yml'
   '/persons/{personId}':
     $ref: 'services/person/persons_id.yml'
   '/persons':

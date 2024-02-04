@@ -35,13 +35,3 @@ put:
         application/json:
           schema:
             $ref: '../../components/address/components.yml#/components/schemas/Address'
-delete:
-  summary: Delete an Address
-  tags:
-    - Address
-  operationId: deleteAddress
-  parameters:
-    - $ref: '../../components/address/components.yml#/components/parameters/AddressIdInPathRequired'
-  responses:
-    '204':
-      description: Delete an address
