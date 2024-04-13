@@ -1,6 +1,7 @@
 package com.jagasa.api;
 
 import com.jagasa.dto.AddressApiDTO;
+import com.jagasa.dto.AddressDTO;
 import com.jagasa.mapper.AddressApiDTOMapper;
 import com.jagasa.service.AddressApi;
 import com.jagasa.service.address.AddressService;
@@ -23,17 +24,19 @@ public class AddressApiImpl implements AddressApi {
 
     @Override
     public ResponseEntity<AddressApiDTO> getAddress(Integer addressId) {
+        System.out.println("------------------getAddress------------------");
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(this.addressApiDTOMapper.toApiDTO(this.addressService.getAddress(addressId)));
     }
 
     @Override
-    public ResponseEntity<AddressApiDTO> updateAddress(Integer addressId, AddressApiDTO addressDTO) {
-        addressDTO.setAddressId(5);
-        addressDTO.setStreet("C/ Mentira");
-        System.out.println("------------------updateAddresss------------------");
-        return ResponseEntity.status(HttpStatus.OK).body((addressDTO));
+    public ResponseEntity<AddressApiDTO> updateAddress(Integer addressId, AddressApiDTO addressApiDTO) {
+        System.out.println("------------------updateAddress------------------");
+        final AddressDTO addressDTO = this.addressApiDTOMapper.toDTO(addressApiDTO);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body((this.addressApiDTOMapper.toApiDTO(this.addressService.updateAddress(addressId, addressDTO))));
     }
     
 }

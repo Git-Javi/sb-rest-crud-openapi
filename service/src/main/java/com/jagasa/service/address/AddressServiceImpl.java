@@ -26,7 +26,9 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     public AddressDTO updateAddress(final Integer addressId, final AddressDTO addressDTO) {
-        return null;
+        this.getAddress(addressId);
+        return this.addressEntityMapper.toDTO(
+                this.addressRepository.save(this.addressEntityMapper.fromDTO(addressDTO)));
     }
 
 }
