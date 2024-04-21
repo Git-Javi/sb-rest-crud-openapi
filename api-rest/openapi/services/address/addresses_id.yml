@@ -1,5 +1,5 @@
 get:
-  summary: Gets an Address
+  summary: Get an Address
   tags:
     - Address
   operationId: getAddress

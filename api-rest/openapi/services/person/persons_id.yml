@@ -1,5 +1,5 @@
 get:
-  summary: Gets a Person
+  summary: Get a Person
   tags:
     - Person
   operationId: getPerson
